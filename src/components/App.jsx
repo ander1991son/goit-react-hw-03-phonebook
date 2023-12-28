@@ -176,9 +176,7 @@ export const App = () => {
       <ImageGallery images={images} onImageClick={handleImageClick} />
       <Loader isLoading={isLoading} />
       <Button images={images} LoadMore={handleLoadMore} />
-      {selectedImage && (
-        <Modal imageUrl={selectedImage} closeModal={closeModal} />
-      )}
+      {selectedImage && <Modal imageUrl={images} closeModal={closeModal} />}
     </div>
   );
 };
@@ -187,6 +185,11 @@ export const App = () => {
 /// ciclos de vida
 
 // import React, { Component } from 'react';
+// import SearchBar from './SearchBar/SearchBar';
+// import ImageGallery from './ImageGallery/ImageGallery';
+// import Loader from './Loader/Loader';
+// import Button from './Button/Button';
+// //import Modal from './Modal/Modal';
 // import axios from 'axios';
 
 // export class App extends Component {
@@ -196,10 +199,11 @@ export const App = () => {
 //       searchTerm: '',
 //       images: [],
 //       isLoading: false,
+//       selectedImage: '',
 //     };
 
 //     this.API_KEY = '41167755-70f3c314cd8390efeff4b47a8';
-//     this.API_URL = `https://pixabay.com/api/?key=${this.API_KEY}&q=${this.state.searchTerm}&per_page=12`;
+//     // this.API_URL = `https://pixabay.com/api/?key=${this.API_KEY}&q=${this.state.searchTerm}&per_page=12`;
 //   }
 
 //   componentDidMount() {
@@ -210,6 +214,9 @@ export const App = () => {
 //   }
 
 //   fetchImages = async () => {
+//     const { searchTerm } = this.state;
+//     const API_URL = `https://pixabay.com/api/?key=${this.API_KEY}&q=${searchTerm}&per_page=12`;
+
 //     this.setState({ isLoading: true });
 //     try {
 //       const response = await axios.get(this.API_URL);
@@ -227,40 +234,39 @@ export const App = () => {
 //     }
 //   }
 
-//   handleSearch = e => {
-//     e.preventDefault();
-//     this.fetchImages();
+//   // handleSearch = e => {
+//   //   // e.preventDefault();
+//   //   this.fetchImages();
+//   // };
+//   handleSearch = searchTerm => {
+//     this.setState({ searchTerm }, () => {
+//       this.fetchImages();
+//     });
 //   };
+
+//   handleImageClick = imageUrl => {
+//     this.setState({ selectedImage: imageUrl });
+//   };
+
+//   // closeModal = () => {
+//   //   this.setState({ selectedImage: null });
+//   // };
 
 //   render() {
 //     const { searchTerm, images, isLoading } = this.state;
 
 //     return (
 //       <div>
-//         <header className="searchbar">
-//           <form className="form" onSubmit={this.handleSearch}>
-//             <input
-//               className="input"
-//               type="text"
-//               placeholder="Search images and photos"
-//               value={searchTerm}
-//               onChange={e => this.setState({ searchTerm: e.target.value })}
-//             />
-//             <button type="submit" className="button">
-//               <span className="button-label">Search</span>
-//             </button>
-//           </form>
-//         </header>
-
-//         <ul className="gallery">
-//           {images.map(image => (
-//             <li key={image.id} className="gallery-item">
-//               <img src={image.webformatURL} alt="" />
-//             </li>
-//           ))}
-//         </ul>
-
-//         {isLoading && <div className="loader">Loading...</div>}
+//         <SearchBar searchTerm={searchTerm} setSearchTerm={this.handleSearch} />
+//         <ImageGallery images={images} onImageClick={this.handleImageClick} />
+//         <Loader isLoading={isLoading} />
+//         <Button images={images} LoadMore={this.handleLoadMore} />
+//         {/* {this.state.selectedImage && (
+//           <Modal
+//             imageUrl={this.state.selectedImage}
+//             closeModal={this.closeModal}
+//           />
+//         )} */}
 //       </div>
 //     );
 //   }

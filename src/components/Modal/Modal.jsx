@@ -12,7 +12,7 @@ const Modal = ({ imageUrl, closeModal }) => {
   );
 
   const handleClose = event => {
-    if (event.target.classList.contains('overlay')) {
+    if (event.target.classList.contains('modal-overlay')) {
       closeModal();
     }
   };
@@ -27,7 +27,7 @@ const Modal = ({ imageUrl, closeModal }) => {
   return (
     <div className={css.overlay} onClick={handleClose}>
       <div className={css.modal}>
-        <img src={imageUrl} alt="Large" />
+        <img src={imageUrl} alt="" />
       </div>
     </div>
   );
