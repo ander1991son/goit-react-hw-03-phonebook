@@ -12,7 +12,7 @@ const Modal = ({ imageUrl, closeModal }) => {
   );
 
   const handleClose = event => {
-    if (event.target.classList.contains('modal-overlay')) {
+    if (event.target.classList.contains('overlay')) {
       closeModal();
     }
   };

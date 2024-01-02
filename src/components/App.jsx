@@ -138,6 +138,15 @@ export const App = () => {
     }
   }, [searchTerm]);
 
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     if (searchTerm) {
+  //       await fetchImages();
+  //     }
+  //   };
+  //   fetchData();
+  // }, [searchTerm, fetchImages]);
+
   const handleSearch = e => {
     e.preventDefault();
     fetchImages();
@@ -156,7 +165,7 @@ export const App = () => {
     }
   };
 
-  const [selectedImage, setSelectedImage] = useState(null); // Nuevo estado para la imagen seleccionada
+  const [selectedImage, setSelectedImage] = useState(null); // Nuevo stado para la imagen seleccionada
 
   const handleImageClick = imageUrl => {
     setSelectedImage(imageUrl); // Actualiza el estado con la URL de la imagen seleccionada al hacer clic
@@ -176,7 +185,9 @@ export const App = () => {
       <ImageGallery images={images} onImageClick={handleImageClick} />
       <Loader isLoading={isLoading} />
       <Button images={images} LoadMore={handleLoadMore} />
-      {selectedImage && <Modal imageUrl={images} closeModal={closeModal} />}
+      {selectedImage && (
+        <Modal imageUrl={handleImageClick} closeModal={closeModal} />
+      )}
     </div>
   );
 };
