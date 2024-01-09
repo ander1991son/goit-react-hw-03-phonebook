@@ -2,11 +2,6 @@ import React from 'react';
 import css from './SearchBar.module.css';
 
 const SearchBar = ({ searchTerm, setSearchTerm, handleSearch }) => {
-  // const handleSubmit = e => {
-  //   e.preventDefault(); // Evitar que el formulario recargue la página
-  //   setSearchTerm(e.value.target); // Invocar la función para realizar la búsqueda
-  // };
-
   return (
     <header className={css.searchbar}>
       <form className={css.form} onSubmit={handleSearch}>
@@ -17,9 +12,6 @@ const SearchBar = ({ searchTerm, setSearchTerm, handleSearch }) => {
           value={searchTerm}
           onChange={e => setSearchTerm(e.target.value)}
         />
-        {/* <button type="submit" className={css.button}>
-          <span className="button-label">Search</span>
-        </button> */}
       </form>
     </header>
   );

@@ -1,21 +1,12 @@
 import React from 'react';
+import css from './Loader.module.css';
 
 import { Audio } from 'react-loader-spinner';
 
 const Loader = ({ isLoading }) => {
   return (
-    <div className="loader">
-      {isLoading && (
-        <Audio
-          height="80"
-          width="80"
-          radius="9"
-          color="green"
-          ariaLabel="loading"
-          wrapperStyle
-          wrapperClass
-        />
-      )}
+    <div className={css.Loader}>
+      {isLoading && <Audio ariaLabel="loading" wrapperStyle wrapperClass />}
     </div>
   );
 };
